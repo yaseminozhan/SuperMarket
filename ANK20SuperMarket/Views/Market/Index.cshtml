@@ -1,0 +1,62 @@
+﻿@using ANK20SuperMarket.Models
+@model List<Product>
+
+@{
+    if (Model != null)
+    {
+        <table class="table table-secondary table-hover table-striped table-bordered">
+
+            <thead>
+                <tr>
+                    <th>
+                        NAME
+                    </th>
+                    <th>
+                        PRICE
+                    </th>
+                    <th>
+                        IN STOCK
+                    </th>
+                    <th>
+                        PHOTO
+                    </th>
+                    <th style="text-align:center">
+                        ACTIONS
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>
+                            @(product.InStock ? "In Stock" : "Not In Stock")
+                        </td>
+                        <td style="text-align:center;">
+                            <img  height="60px" width="60px" src="~/Images/@product.PhotoName" alt="No Photo" />
+                        </td>
+                        <td style="text-align:center;">
+                            <a asp-action="Delete" asp-route-id="@product.Id"> <i class="fa fa-trash" style="font-size:24px; color:red"></i></a>
+
+                            <a asp-action="Update" asp-route-id="@product.Id">   <i class="fas fa-sync-alt fa-spin" style="color:yellow; font-size:24px"></i></a>
+
+                            <a asp-action="RemovePhoto" asp-route-id="@product.Id">      <i class='far fa-file-excel' style='font-size:24px'></i></a>
+
+                        
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+
+    }
+}
+
+

@@ -1,0 +1,20 @@
+﻿@model Product
+<div class="alert alert-danger">
+   Are you sure you would like to delete the product written below?
+ <hr />
+    <br />
+    <b> Name: @Model.Name   <br />
+        Price: @Model.Price    <br />  
+        Stock: @(Model.InStock ? "In Stock" : "Not In Stock")
+    </b>
+    
+    <form asp-action="Delete" asp-controller="Market" method="post">
+      @*   <input asp-for="Name" hidden />
+        <input asp-for="Price" hidden />
+        <input asp-for="InStock" hidden /> *@
+        <input asp-for="PhotoName" hidden />
+        <input type="submit" class="btn btn-danger" value="YES" />
+        <a class="btn btn-primary" asp-action="Index">NO</a>
+    </form>
+
+</div>

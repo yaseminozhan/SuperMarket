@@ -1,0 +1,25 @@
+﻿@model ProductVM
+
+
+@{
+    if (TempData["Error"]!=null)
+    {
+        <div class="alert alert-danger"> @TempData["Error"]</div>
+    }
+}
+
+<form asp-action="Add" asp-controller="Market" method="post" enctype="multipart/form-data">
+    <label class="form-label">Name:</label>
+    <input asp-for="Name"   class="form-control"/>
+
+    <label class="form-label">Price:</label>
+    <input asp-for="Price" class="form-control" />
+
+    <label class="form-label">Upload Product Photo:</label>
+    <input asp-for="Photo" class="form-control" />
+
+    <label class="form-label">Stock</label>
+    <input asp-for="InStock"   /> <br />
+
+    <input type="submit" class="btn btn-outline-success w-100" value="ADD"/>
+</form>
